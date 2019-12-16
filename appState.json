@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "sam3indu/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst ddb = new AWS.DynamoDB.DocumentClient();\n\nexports.handler = function (event, context, callback) {\n    ddb.get({\n        TableName: 'testIndu',\n        Key: { 'test': '10' }\n    }).promise()\n        .then((data) => {\n                        console.log(\"dataaaaa\");\n\n            //your logic goes here\n        })\n        .catch((err) => {\n                        console.log(\"errrrrrr\");\n\n            //handle error\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst ddb = new AWS.DynamoDB.DocumentClient();\n\nexports.handler = function (event, context, callback) {\n    debugger;\n    ddb.get({\n        TableName: 'testIndu',\n        Key: { 'test': '10' }\n    }).promise()\n        .then((data) => {\n            console.log(\"dataaaaa\");\n\n            //your logic goes here\n        })\n        .catch((err) => {\n            console.log(\"errrrrrr\");\n\n            //handle error\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -30,7 +30,16 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": []
+        "triggers": [],
+        "testCases": {
+          "e4af771d-0d05-4157-8388-7d71f2b79d2e": {
+            "id": "e4af771d-0d05-4157-8388-7d71f2b79d2e",
+            "name": "Test event",
+            "functionId": "f473b08a-311c-4834-8307-f274e13b81bc",
+            "event": "{\"key1\": \"value1\", \"key2\": \"value2\", \"key3\": \"value3\"}",
+            "eventTemplate": "hello-world"
+          }
+        }
       }
     },
     "rootNode": "d5caefea-a9f2-4607-836a-30539d756500",
@@ -107,7 +116,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1576482654665
+    "lastSave": 1576482929753
   },
   "VCS_STATE": {
     "provider": "GitHub",
